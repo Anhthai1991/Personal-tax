@@ -71,12 +71,12 @@ Công cụ tính thuế thu nhập cá nhân (TNCN) Việt Nam năm 2026 - So s�
 ## 🚀 Cách sử dụng
 
 ### Sử dụng trực tuyến
-Truy cập: [Vietnam PIT Calculator 2026](#)
+Truy cập: [anhthai1991.github.io/Personal-tax/](#)
 
 ### Chạy local
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/vietnam-pit-2026.git
+git clone https://github.com/anhthai1991/Personal-tax.git
 
 # Mở file index.html trong trình duyệt
 # Không cần cài đặt gì thêm!
