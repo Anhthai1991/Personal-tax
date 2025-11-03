@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Thuế Thu Nhập Cá Nhân Việt Nam 2026 - Vietnam Personal Income Tax Calculator</title>
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --primary-light: #3B82F6;
+            --success: #10B981;
+            --accent: #F59E0B;
+            --danger: #EF4444;
+            --bg-light: #F9FAFB;
+            --bg-white: #FFFFFF;
+            --text-dark: #1F2937;
+            --text-gray: #6B7280;
+            --border: #E5E7EB;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        header .subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .main-content {
+            padding: 30px 0;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        .label-subtitle {
+            font-size: 12px;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        input[type="number"],
+        select {
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .checkbox-group:hover {
+            background: #E5E7EB;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .result-card {
+            background: var(--bg-light);
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid var(--border);
+        }
+
+        .result-card.highlight {
+            border-color: var(--success);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
+        }
+
+        .result-card h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        .result-value {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        .result-value.highlight {
+            color: var(--success);
+            font-size: 18px;
+        }
+
+        .result-value.negative {
+            color: var(--danger);
+        }
+
+        .breakdown-section {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 2px solid var(--border);
+        }
+
+        .breakdown-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .savings-badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover {
+            background: var(--bg-light);
+        }
+
+        .highlight-cell {
+            background: rgba(245, 158, 11, 0.1);
+            font-weight: 600;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .scenario-card {
+            background: var(--bg-white);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .scenario-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .scenario-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .scenario-desc {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+        }
+
+        .scenario-result {
+            font-size: 13px;
+            padding: 6px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .key-changes {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .key-changes li {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: var(--bg-light);
+            border-left: 4px solid var(--success);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .notes-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .notes-list li {
+            padding: 10px 10px 10px 30px;
+            margin-bottom: 8px;
+            position: relative;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .notes-list li:before {
+            content: "ℹ️";
+            position: absolute;
+            left: 8px;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 22px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 16px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        @media print {
+            header, footer, .checkbox-group, .btn {
+                display: none;
+            }
+
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🇻🇳 Máy Tính Thuế Thu Nhập Cá Nhân 2026</h1>
+            <p class="subtitle">Vietnam Personal Income Tax Calculator 2026</p>
+            <div class="badge">✓ Đã cập nhật theo Nghị quyết UBTVQH ngày 17/10/2025</div>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <!-- Calculator Section -->
+        <div class="card">
+            <div class="card-title">
+                <div class="card-title-icon">🧮</div>
+                <div>Tính Thuế Thu Nhập</div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>
+                        Thu nhập hàng tháng (VNĐ)
+                        <span class="label-subtitle">Monthly Gross Salary</span>
+                    </label>
+                    <input type="number" id="salary" value="25000000" min="0" step="1000000" placeholder="Ví dụ: 25000000">
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Số người phụ thuộc
+                        <span class="label-subtitle">Number of Dependents</span>
+                    </label>
+                    <input type="number" id="dependents" value="1" min="0" max="10" placeholder="0">
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Hệ thống thuế
+                        <span class="label-subtitle">Tax System</span>
+                    </label>
+                    <select id="taxSystem">
+                        <option value="current_2025">Hiện tại 2025 (7 bậc)</option>
+                        <option value="proposed_2026_option1">Đề xuất 2026 - Phương án 1 (5 bậc)</option>
+                        <option value="proposed_2026_option2" selected>Đề xuất 2026 - Phương án 2 - Khuyến nghị (5 bậc)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="compareMode">
+                <label for="compareMode">
+                    <strong>So sánh tất cả các hệ thống</strong> (Compare all systems side-by-side)
+                </label>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary" onclick="calculate()">
+                    <span>💰</span>
+                    <span>Tính Thuế / Calculate Tax</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" style="display: none;">
+            <div class="card">
+                <div class="card-title">
+                    <div class="card-title-icon">📊</div>
+                    <div>Kết Quả Tính Thuế / Tax Calculation Results</div>
+                </div>
+                <div id="resultsContent" class="results-grid"></div>
+            </div>
+        </div>
+
+        <!-- Tax Brackets Tables -->
+        <div class="card">
+            <div class="card-title">
+                <div class="card-title-icon">📋</div>
+                <div>Bảng Thuế Suất / Tax Brackets</div>
+            </div>
+
+            <h3 style="margin-top: 20px; color: var(--primary);">Hệ thống thuế hiện tại 2025 (7 bậc)</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bậc</th>
+                            <th>Thu nhập tính thuế/tháng (triệu VNĐ)</th>
+                            <th>Thuế suất</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Đến 5</td><td>5%</td></tr>
+                        <tr><td>2</td><td>Trên 5 đến 10</td><td>10%</td></tr>
+                        <tr><td>3</td><td>Trên 10 đến 18</td><td>15%</td></tr>
+                        <tr><td>4</td><td>Trên 18 đến 32</td><td>20%</td></tr>
+                        <tr><td>5</td><td>Trên 32 đến 52</td><td>25%</td></tr>
+                        <tr><td>6</td><td>Trên 52 đến 80</td><td>30%</td></tr>
+                        <tr><td>7</td><td>Trên 80</td><td>35%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 12px; font-size: 14px; color: var(--text-gray);">Giảm trừ: <strong>11 triệu/tháng</strong> (bản thân) + <strong>4.4 triệu/tháng</strong> (mỗi người phụ thuộc)</p>
+
+            <h3 style="margin-top: 30px; color: var(--primary);">Đề xuất 2026 - Phương án 1 (5 bậc)</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bậc</th>
+                            <th>Thu nhập tính thuế/tháng (triệu VNĐ)</th>
+                            <th>Thuế suất</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-cell"><td>1</td><td>Đến 10</td><td>5%</td></tr>
+                        <tr class="highlight-cell"><td>2</td><td>Trên 10 đến 30</td><td>15%</td></tr>
+                        <tr class="highlight-cell"><td>3</td><td>Trên 30 đến 50</td><td>25%</td></tr>
+                        <tr><td>4</td><td>Trên 50 đến 80</td><td>30%</td></tr>
+                        <tr><td>5</td><td>Trên 80</td><td>35%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 12px; font-size: 14px; color: var(--text-gray);">Giảm trừ: <strong>15.5 triệu/tháng</strong> (bản thân) + <strong>6.2 triệu/tháng</strong> (mỗi người phụ thuộc)</p>
+
+            <h3 style="margin-top: 30px; color: var(--success);">⭐ Đề xuất 2026 - Phương án 2 - KHUYẾN NGHỊ (5 bậc)</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bậc</th>
+                            <th>Thu nhập tính thuế/tháng (triệu VNĐ)</th>
+                            <th>Thuế suất</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-cell"><td>1</td><td>Đến 10</td><td>5%</td></tr>
+                        <tr class="highlight-cell"><td>2</td><td>Trên 10 đến 30</td><td>15%</td></tr>
+                        <tr class="highlight-cell"><td>3</td><td>Trên 30 đến 60</td><td>25%</td></tr>
+                        <tr class="highlight-cell"><td>4</td><td>Trên 60 đến 100</td><td>30%</td></tr>
+                        <tr><td>5</td><td>Trên 100</td><td>35%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 12px; font-size: 14px; color: var(--text-gray);">Giảm trừ: <strong>15.5 triệu/tháng</strong> (bản thân) + <strong>6.2 triệu/tháng</strong> (mỗi người phụ thuộc)</p>
+        </div>
+
+        <!-- Key Changes -->
+        <div class="card">
+            <div class="card-title">
+                <div class="card-title-icon">✨</div>
+                <div>Những thay đổi chính năm 2026 / Key Changes in 2026</div>
+            </div>
+            <ul class="key-changes">
+                <li>Giảm số bậc thuế từ 7 xuống 5</li>
+                <li>Tăng giảm trừ bản thân từ 11 triệu lên 15.5 triệu VNĐ/tháng (+40.9%)</li>
+                <li>Tăng giảm trừ người phụ thuộc từ 4.4 triệu lên 6.2 triệu VNĐ/tháng (+40.9%)</li>
+                <li>Mở rộng khoảng thu nhập giữa các bậc thuế</li>
+                <li>Phương án 2 được Bộ Tài chính khuyến nghị</li>
+            </ul>
+        </div>
+
+        <!-- Sample Scenarios -->
+        <div class="card">
+            <div class="card-title">
+                <div class="card-title-icon">🎯</div>
+                <div>Ví dụ thực tế / Sample Scenarios</div>
+            </div>
+            <div id="scenarios" class="scenarios-grid"></div>
+        </div>
+
+        <!-- Important Notes -->
+        <div class="card">
+            <div class="card-title">
+                <div class="card-title-icon">📌</div>
+                <div>Lưu ý quan trọng / Important Notes</div>
+            </div>
+            <ul class="notes-list">
+                <li>Có hiệu lực từ kỳ tính thuế 2026 (khai báo thuế quý 1/2027)</li>
+                <li>Được UBTVQH thông qua ngày 17/10/2025</li>
+                <li>Dự kiến giảm thu ngân sách ~21 nghìn tỷ VNĐ/năm</li>
+                <li>Tất cả số liệu tính bằng triệu VNĐ (theo tháng)</li>
+                <li>Đóng bảo hiểm được khấu trừ trước khi tính thuế (Bảo hiểm xã hội 8%, Y tế 1.5%, Thất nghiệp 1%)</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>📖 Giới thiệu / About</h4>
+                    <p>Công cụ tính thuế thu nhập cá nhân Việt Nam 2026 với so sánh chi tiết giữa hệ thống hiện tại và đề xuất mới. Dữ liệu dựa trên Nghị quyết của UBTVQH ngày 17/10/2025.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🔗 Nguồn tham khảo / References</h4>
+                    <p>
+                        <a href="https://thuvienphapluat.vn" target="_blank">Thư viện Pháp luật Việt Nam</a><br>
+                        <a href="https://gdt.gov.vn" target="_blank">Tổng cục Thuế</a><br>
+                        <a href="https://mof.gov.vn" target="_blank">Bộ Tài chính</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>⚠️ Disclaimer</h4>
+                    <p>Công cụ này chỉ mang tính chất tham khảo. Vui lòng tham khảo cơ quan thuế hoặc chuyên gia tư vấn thuế để có kết quả chính xác nhất.</p>
+                    <p style="margin-top: 10px; opacity: 0.7;">Last updated: November 2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tax system data
+        const taxSystems = {
+            current_2025: {
+                name: "Hệ thống thuế hiện tại 2025 (7 bậc)",
+                brackets: [
+                    { min: 0, max: 5, rate: 5 },
+                    { min: 5, max: 10, rate: 10 },
+                    { min: 10, max: 18, rate: 15 },
+                    { min: 18, max: 32, rate: 20 },
+                    { min: 32, max: 52, rate: 25 },
+                    { min: 52, max: 80, rate: 30 },
+                    { min: 80, max: null, rate: 35 }
+                ],
+                deductions: { self: 11, dependent: 4.4 }
+            },
+            proposed_2026_option1: {
+                name: "Đề xuất 2026 Phương án 1 (5 bậc)",
+                brackets: [
+                    { min: 0, max: 10, rate: 5 },
+                    { min: 10, max: 30, rate: 15 },
+                    { min: 30, max: 50, rate: 25 },
+                    { min: 50, max: 80, rate: 30 },
+                    { min: 80, max: null, rate: 35 }
+                ],
+                deductions: { self: 15.5, dependent: 6.2 }
+            },
+            proposed_2026_option2: {
+                name: "Đề xuất 2026 Phương án 2 - KHUYẾN NGHỊ (5 bậc)",
+                brackets: [
+                    { min: 0, max: 10, rate: 5 },
+                    { min: 10, max: 30, rate: 15 },
+                    { min: 30, max: 60, rate: 25 },
+                    { min: 60, max: 100, rate: 30 },
+                    { min: 100, max: null, rate: 35 }
+                ],
+                deductions: { self: 15.5, dependent: 6.2 }
+            }
+        };
+
+        const insuranceRates = {
+            social: 8.0,
+            health: 1.5,
+            unemployment: 1.0,
+            total: 10.5
+        };
+
+        // Format number with thousand separators
+        function formatMoney(amount) {
+            return Math.round(amount).toLocaleString('vi-VN');
+        }
+
+        // Calculate tax for a specific system
+        function calculateTax(salary, dependents, systemKey) {
+            const system = taxSystems[systemKey];
+            
+            // Convert salary to millions for calculation
+            const salaryInMillions = salary / 1000000;
+            
+            // Calculate insurance deductions
+            const insuranceAmount = salary * (insuranceRates.total / 100);
+            const insuranceInMillions = insuranceAmount / 1000000;
+            
+            // Calculate personal deductions
+            const personalDeduction = system.deductions.self + (dependents * system.deductions.dependent);
+            
+            // Calculate taxable income
+            const taxableIncome = salaryInMillions - insuranceInMillions - personalDeduction;
+            
+            // Calculate tax by brackets
+            let totalTax = 0;
+            let breakdownDetails = [];
+            
+            if (taxableIncome > 0) {
+                for (let bracket of system.brackets) {
+                    if (taxableIncome > bracket.min) {
+                        const taxableInBracket = bracket.max !== null 
+                            ? Math.min(taxableIncome, bracket.max) - bracket.min
+                            : taxableIncome - bracket.min;
+                        
+                        if (taxableInBracket > 0) {
+                            const taxInBracket = taxableInBracket * (bracket.rate / 100);
+                            totalTax += taxInBracket;
+                            
+                            breakdownDetails.push({
+                                bracket: `Bậc ${system.brackets.indexOf(bracket) + 1}`,
+                                range: bracket.max !== null 
+                                    ? `${bracket.min} - ${bracket.max}M` 
+                                    : `Trên ${bracket.min}M`,
+                                rate: `${bracket.rate}%`,
+                                amount: taxableInBracket,
+                                tax: taxInBracket
+                            });
+                        }
+                    }
+                }
+            }
+            
+            const totalTaxInVND = totalTax * 1000000;
+            const netSalary = salary - insuranceAmount - totalTaxInVND;
+            const effectiveRate = salary > 0 ? (totalTaxInVND / salary * 100) : 0;
+            
+            return {
+                systemName: system.name,
+                grossSalary: salary,
+                insurance: insuranceAmount,
+                insuranceBreakdown: {
+                    social: salary * (insuranceRates.social / 100),
+                    health: salary * (insuranceRates.health / 100),
+                    unemployment: salary * (insuranceRates.unemployment / 100)
+                },
+                personalDeduction: personalDeduction * 1000000,
+                deductionBreakdown: {
+                    self: system.deductions.self * 1000000,
+                    dependents: dependents * system.deductions.dependent * 1000000
+                },
+                taxableIncome: Math.max(0, taxableIncome) * 1000000,
+                taxBreakdown: breakdownDetails,
+                totalTax: totalTaxInVND,
+                netSalary: netSalary,
+                effectiveRate: effectiveRate
+            };
+        }
+
+        // Display results
+        function displayResults(results, compareMode) {
+            const resultsContent = document.getElementById('resultsContent');
+            const resultsDiv = document.getElementById('results');
+            
+            let html = '';
+            
+            if (compareMode) {
+                const current = results.current_2025;
+                const option1 = results.proposed_2026_option1;
+                const option2 = results.proposed_2026_option2;
+                
+                // Find best option
+                const bestOption = option1.totalTax < option2.totalTax ? 'option1' : 'option2';
+                const savings1 = current.totalTax - option1.totalTax;
+                const savings2 = current.totalTax - option2.totalTax;
+                const savingsPercent1 = (savings1 / current.totalTax * 100);
+                const savingsPercent2 = (savings2 / current.totalTax * 100);
+                
+                for (let key in results) {
+                    const result = results[key];
+                    const isOption2 = key === 'proposed_2026_option2';
+                    const highlightClass = isOption2 ? 'highlight' : '';
+                    
+                    html += `
+                        <div class="result-card ${highlightClass} loading">
+                            <h3>${result.systemName}</h3>
+                            ${isOption2 ? '<p style="color: var(--success); font-weight: 600; margin-bottom: 12px;">⭐ Được khuyến nghị</p>' : ''}
+                            
+                            <div class="result-item">
+                                <span class="result-label">Thu nhập gộp</span>
+                                <span class="result-value">${formatMoney(result.grossSalary)} đ</span>
+                            </div>
+                            
+                            <div class="breakdown-section">
+                                <div class="breakdown-title">Khấu trừ bảo hiểm (10.5%)</div>
+                                <div class="breakdown-item">
+                                    <span>• BHXH (8%)</span>
+                                    <span>${formatMoney(result.insuranceBreakdown.social)} đ</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span>• BHYT (1.5%)</span>
+                                    <span>${formatMoney(result.insuranceBreakdown.health)} đ</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span>• BHTN (1%)</span>
+                                    <span>${formatMoney(result.insuranceBreakdown.unemployment)} đ</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label"><strong>Tổng bảo hiểm</strong></span>
+                                    <span class="result-value negative">${formatMoney(result.insurance)} đ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="breakdown-section">
+                                <div class="breakdown-title">Giảm trừ gia cảnh</div>
+                                <div class="breakdown-item">
+                                    <span>• Bản thân</span>
+                                    <span>${formatMoney(result.deductionBreakdown.self)} đ</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span>• Người phụ thuộc</span>
+                                    <span>${formatMoney(result.deductionBreakdown.dependents)} đ</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label"><strong>Tổng giảm trừ</strong></span>
+                                    <span class="result-value negative">${formatMoney(result.personalDeduction)} đ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-label">Thu nhập tính thuế</span>
+                                <span class="result-value">${formatMoney(result.taxableIncome)} đ</span>
+                            </div>
+                            
+                            ${result.taxBreakdown.length > 0 ? `
+                                <div class="breakdown-section">
+                                    <div class="breakdown-title">Chi tiết thuế theo bậc</div>
+                                    ${result.taxBreakdown.map(b => `
+                                        <div class="breakdown-item">
+                                            <span>• ${b.bracket} (${b.rate}): ${formatMoney(b.amount * 1000000)} đ</span>
+                                            <span>${formatMoney(b.tax * 1000000)} đ</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            <div class="result-item" style="border-top: 2px solid var(--border); padding-top: 12px; margin-top: 12px;">
+                                <span class="result-label"><strong>Thuế TNCN phải nộp</strong></span>
+                                <span class="result-value negative" style="font-size: 18px;">${formatMoney(result.totalTax)} đ</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-label"><strong>Thu nhập thực nhận</strong></span>
+                                <span class="result-value highlight">${formatMoney(result.netSalary)} đ</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-label">Thuế suất hiệu dụng</span>
+                                <span class="result-value">${result.effectiveRate.toFixed(2)}%</span>
+                            </div>
+                            
+                            ${key !== 'current_2025' ? `
+                                <div class="savings-badge">
+                                    💰 Tiết kiệm: ${formatMoney(key === 'proposed_2026_option1' ? savings1 : savings2)} đ 
+                                    (${(key === 'proposed_2026_option1' ? savingsPercent1 : savingsPercent2).toFixed(1)}%)
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+            } else {
+                const systemKey = document.getElementById('taxSystem').value;
+                const result = results[systemKey];
+                
+                html = `
+                    <div class="result-card loading" style="grid-column: 1 / -1;">
+                        <h3>${result.systemName}</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                            <div>
+                                <div class="result-item">
+                                    <span class="result-label">Thu nhập gộp</span>
+                                    <span class="result-value">${formatMoney(result.grossSalary)} đ</span>
+                                </div>
+                                
+                                <div class="breakdown-section">
+                                    <div class="breakdown-title">Khấu trừ bảo hiểm (10.5%)</div>
+                                    <div class="breakdown-item">
+                                        <span>• BHXH (8%)</span>
+                                        <span>${formatMoney(result.insuranceBreakdown.social)} đ</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>• BHYT (1.5%)</span>
+                                        <span>${formatMoney(result.insuranceBreakdown.health)} đ</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>• BHTN (1%)</span>
+                                        <span>${formatMoney(result.insuranceBreakdown.unemployment)} đ</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-label"><strong>Tổng bảo hiểm</strong></span>
+                                        <span class="result-value negative">${formatMoney(result.insurance)} đ</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="breakdown-section">
+                                    <div class="breakdown-title">Giảm trừ gia cảnh</div>
+                                    <div class="breakdown-item">
+                                        <span>• Bản thân</span>
+                                        <span>${formatMoney(result.deductionBreakdown.self)} đ</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>• Người phụ thuộc</span>
+                                        <span>${formatMoney(result.deductionBreakdown.dependents)} đ</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-label"><strong>Tổng giảm trừ</strong></span>
+                                        <span class="result-value negative">${formatMoney(result.personalDeduction)} đ</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="result-item">
+                                    <span class="result-label">Thu nhập tính thuế</span>
+                                    <span class="result-value">${formatMoney(result.taxableIncome)} đ</span>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                ${result.taxBreakdown.length > 0 ? `
+                                    <div class="breakdown-section">
+                                        <div class="breakdown-title">Chi tiết thuế theo bậc</div>
+                                        ${result.taxBreakdown.map(b => `
+                                            <div class="breakdown-item" style="padding: 8px 0;">
+                                                <div>
+                                                    <strong>${b.bracket}</strong> (${b.rate})<br>
+                                                    <span style="font-size: 12px; color: var(--text-gray);">${b.range}</span><br>
+                                                    <span style="font-size: 12px;">Thu nhập: ${formatMoney(b.amount * 1000000)} đ</span>
+                                                </div>
+                                                <div style="text-align: right;">
+                                                    <strong style="color: var(--danger);">${formatMoney(b.tax * 1000000)} đ</strong>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                ` : '<p style="color: var(--text-gray); text-align: center; padding: 20px;">Không phải nộp thuế</p>'}
+                                
+                                <div class="result-item" style="border-top: 2px solid var(--border); padding-top: 12px; margin-top: 12px;">
+                                    <span class="result-label"><strong>Tổng thuế TNCN</strong></span>
+                                    <span class="result-value negative" style="font-size: 20px;">${formatMoney(result.totalTax)} đ</span>
+                                </div>
+                                
+                                <div class="result-item">
+                                    <span class="result-label"><strong>Thu nhập thực nhận</strong></span>
+                                    <span class="result-value highlight" style="font-size: 22px;">${formatMoney(result.netSalary)} đ</span>
+                                </div>
+                                
+                                <div class="result-item">
+                                    <span class="result-label">Thuế suất hiệu dụng</span>
+                                    <span class="result-value">${result.effectiveRate.toFixed(2)}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            resultsContent.innerHTML = html;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Main calculate function
+        function calculate() {
+            const salary = parseFloat(document.getElementById('salary').value) || 0;
+            const dependents = parseInt(document.getElementById('dependents').value) || 0;
+            const compareMode = document.getElementById('compareMode').checked;
+            
+            if (salary <= 0) {
+                alert('Vui lòng nhập mức lương hợp lệ!');
+                return;
+            }
+            
+            const results = {};
+            
+            if (compareMode) {
+                results.current_2025 = calculateTax(salary, dependents, 'current_2025');
+                results.proposed_2026_option1 = calculateTax(salary, dependents, 'proposed_2026_option1');
+                results.proposed_2026_option2 = calculateTax(salary, dependents, 'proposed_2026_option2');
+            } else {
+                const systemKey = document.getElementById('taxSystem').value;
+                results[systemKey] = calculateTax(salary, dependents, systemKey);
+            }
+            
+            displayResults(results, compareMode);
+        }
+
+        // Generate sample scenarios
+        function generateScenarios() {
+            const scenarios = [
+                { salary: 20000000, dependents: 1, description: "Thu nhập trung bình với 1 người phụ thuộc" },
+                { salary: 25000000, dependents: 1, description: "Thu nhập khá với 1 người phụ thuộc" },
+                { salary: 30000000, dependents: 2, description: "Thu nhập khá với 2 người phụ thuộc" },
+                { salary: 50000000, dependents: 2, description: "Thu nhập cao với 2 người phụ thuộc" }
+            ];
+            
+            const scenariosContainer = document.getElementById('scenarios');
+            let html = '';
+            
+            scenarios.forEach(scenario => {
+                const current = calculateTax(scenario.salary, scenario.dependents, 'current_2025');
+                const option2 = calculateTax(scenario.salary, scenario.dependents, 'proposed_2026_option2');
+                const savings = current.totalTax - option2.totalTax;
+                const savingsPercent = (savings / current.totalTax * 100);
+                
+                html += `
+                    <div class="scenario-card">
+                        <div class="scenario-title">${formatMoney(scenario.salary)} đ/tháng</div>
+                        <div class="scenario-desc">${scenario.description}</div>
+                        <div class="scenario-result">
+                            <span>Thuế hiện tại:</span>
+                            <span><strong>${formatMoney(current.totalTax)} đ</strong></span>
+                        </div>
+                        <div class="scenario-result">
+                            <span>Thuế 2026 (PA2):</span>
+                            <span><strong style="color: var(--success);">${formatMoney(option2.totalTax)} đ</strong></span>
+                        </div>
+                        <div class="scenario-result" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">
+                            <span><strong>Tiết kiệm:</strong></span>
+                            <span><strong style="color: var(--success);">${formatMoney(savings)} đ (${savingsPercent.toFixed(1)}%)</strong></span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            scenariosContainer.innerHTML = html;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateScenarios();
+            
+            // Add event listeners for real-time calculation
+            document.getElementById('salary').addEventListener('input', function() {
+                if (document.getElementById('results').style.display !== 'none') {
+                    calculate();
+                }
+            });
+            
+            document.getElementById('dependents').addEventListener('input', function() {
+                if (document.getElementById('results').style.display !== 'none') {
+                    calculate();
+                }
+            });
+            
+            document.getElementById('taxSystem').addEventListener('change', function() {
+                if (document.getElementById('results').style.display !== 'none') {
+                    calculate();
+                }
+            });
+            
+            document.getElementById('compareMode').addEventListener('change', function() {
+                if (document.getElementById('results').style.display !== 'none') {
+                    calculate();
+                }
+            });
+            
+            // Calculate initial result
+            calculate();
+        });
+    </script>
+</body>
+</html>

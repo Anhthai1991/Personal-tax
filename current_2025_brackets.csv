@@ -1,0 +1,8 @@
+Bracket,Monthly_Min_VND,Monthly_Max_VND,Rate_Percent
+1,0,5,5
+2,5,10,10
+3,10,18,15
+4,18,32,20
+5,32,52,25
+6,52,80,30
+7,80,Over 80,35

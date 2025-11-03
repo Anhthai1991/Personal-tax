@@ -1,0 +1,162 @@
+{
+  "current_2025": {
+    "name": "Current 2025 Tax Schedule (7 Brackets)",
+    "effective_period": "2020-2025",
+    "brackets": [
+      {
+        "bracket": 1,
+        "min": 0,
+        "max": 5,
+        "rate": 5
+      },
+      {
+        "bracket": 2,
+        "min": 5,
+        "max": 10,
+        "rate": 10
+      },
+      {
+        "bracket": 3,
+        "min": 10,
+        "max": 18,
+        "rate": 15
+      },
+      {
+        "bracket": 4,
+        "min": 18,
+        "max": 32,
+        "rate": 20
+      },
+      {
+        "bracket": 5,
+        "min": 32,
+        "max": 52,
+        "rate": 25
+      },
+      {
+        "bracket": 6,
+        "min": 52,
+        "max": 80,
+        "rate": 30
+      },
+      {
+        "bracket": 7,
+        "min": 80,
+        "max": null,
+        "rate": 35
+      }
+    ],
+    "deductions": {
+      "self": 11.0,
+      "dependent": 4.4
+    }
+  },
+  "proposed_2026_option1": {
+    "name": "Proposed 2026 Option 1 (5 Brackets)",
+    "effective_period": "Expected from July 2026",
+    "brackets": [
+      {
+        "bracket": 1,
+        "min": 0,
+        "max": 10,
+        "rate": 5
+      },
+      {
+        "bracket": 2,
+        "min": 10,
+        "max": 30,
+        "rate": 15
+      },
+      {
+        "bracket": 3,
+        "min": 30,
+        "max": 50,
+        "rate": 25
+      },
+      {
+        "bracket": 4,
+        "min": 50,
+        "max": 80,
+        "rate": 30
+      },
+      {
+        "bracket": 5,
+        "min": 80,
+        "max": null,
+        "rate": 35
+      }
+    ],
+    "deductions": {
+      "self": 15.5,
+      "dependent": 6.2
+    }
+  },
+  "proposed_2026_option2": {
+    "name": "Proposed 2026 Option 2 - RECOMMENDED (5 Brackets)",
+    "effective_period": "Expected from July 2026",
+    "brackets": [
+      {
+        "bracket": 1,
+        "min": 0,
+        "max": 10,
+        "rate": 5
+      },
+      {
+        "bracket": 2,
+        "min": 10,
+        "max": 30,
+        "rate": 15
+      },
+      {
+        "bracket": 3,
+        "min": 30,
+        "max": 60,
+        "rate": 25
+      },
+      {
+        "bracket": 4,
+        "min": 60,
+        "max": 100,
+        "rate": 30
+      },
+      {
+        "bracket": 5,
+        "min": 100,
+        "max": null,
+        "rate": 35
+      }
+    ],
+    "deductions": {
+      "self": 15.5,
+      "dependent": 6.2
+    }
+  },
+  "insurance_rates": {
+    "employee": {
+      "social_insurance": 8.0,
+      "health_insurance": 1.5,
+      "unemployment_insurance": 1.0,
+      "total": 10.5
+    },
+    "employer": {
+      "social_insurance": 17.5,
+      "health_insurance": 3.0,
+      "unemployment_insurance": 1.0,
+      "total": 21.5
+    }
+  },
+  "key_changes_2026": [
+    "Tax brackets reduced from 7 to 5",
+    "Personal deduction increased from 11M to 15.5M VND/month (+40.9%)",
+    "Dependent deduction increased from 4.4M to 6.2M VND/month (+40.9%)",
+    "Wider income ranges between brackets",
+    "Option 2 recommended by Ministry of Finance"
+  ],
+  "notes": [
+    "Effective from tax period 2026 (tax declaration in Q1 2027)",
+    "Approved by National Assembly Standing Committee on October 17, 2025",
+    "Expected to reduce state revenue by ~21 trillion VND annually",
+    "All amounts in million VND (monthly basis)",
+    "Insurance contributions are deductible before tax calculation"
+  ]
+}
