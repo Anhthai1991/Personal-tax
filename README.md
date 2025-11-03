@@ -148,8 +148,8 @@ Mọi đóng góp đều được chào đón! Vui lòng:
 
 ## 📞 Liên hệ & Hỗ trợ
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/vietnam-pit-2026/issues)
-- **Email**: your.email@example.com
+- **Issues**: [GitHub Issues](https://github.com/anhthai1991/vietnam-pit-2026/issues)
+- **Email**: Anhthai.nhs@gmail.com
 - **Website**: [Vietnam Tax Portal](https://gdt.gov.vn)
 
 ## 📄 License
