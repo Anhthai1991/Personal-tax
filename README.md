@@ -71,7 +71,7 @@ Công cụ tính thuế thu nhập cá nhân (TNCN) Việt Nam năm 2026 - So s�
 ## 🚀 Cách sử dụng
 
 ### Sử dụng trực tuyến
-Truy cập: [anhthai1991.github.io/Personal-tax/](#)
+Truy cập: [anhthai1991.github.io/Personal-tax/])
 
 ### Chạy local
 ```bash
