@@ -373,4 +373,4 @@ net_salary = gross_salary - insurance - tax
 ---
 
 **Cập nhật**: Tháng 11/2025  
-**Liên hệ hỗ trợ**: support@example.com
+**Liên hệ hỗ trợ**: anhthai.nhs@gmail.com
